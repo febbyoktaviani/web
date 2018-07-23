@@ -24,7 +24,6 @@ class CurrencyExchangeRateHistoryService():
         data['currency_exchange'] = currency_exchange
         exchange_rate = CurrencyExchangeRateHistory(**data)
         data_added = exchange_rate.save()
-        print(data_added)
 
     def get_seven_days_average(self, currency_exchange, date):
         seven_days_ago = date - relativedelta(days=7)
