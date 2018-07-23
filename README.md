@@ -1,3 +1,3 @@
-#Exchange_Rate
-is a exchange_rate simplie app
+# web
+a simple currency exchange rate web
 
