@@ -5,6 +5,12 @@ from .models import CurrencyExchange
 from .models import CurrencyExchangeRateHistory
 
 
+class CurrencyService():
+    @staticmethod
+    def add(name, description):
+        return Currency.objects.create(name=name, description=description)
+
+
 class CurrencyExchangeRateHistoryService():
     def add(self, data):
         source_currency = Currency.objects.get_or_none(pk=data.pop('source_currency'))
@@ -18,6 +24,7 @@ class CurrencyExchangeRateHistoryService():
         data['currency_exchange'] = currency_exchange
         exchange_rate = CurrencyExchangeRateHistory(**data)
         data_added = exchange_rate.save()
+        print(data_added)
 
     def get_seven_days_average(self, currency_exchange, date):
         seven_days_ago = date - relativedelta(days=7)

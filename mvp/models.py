@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+import logging
 
 from datetime import timedelta
 from dateutil.relativedelta import relativedelta
@@ -8,6 +9,9 @@ from django.db import connection
 from django.db import models
 from django.db.models import Sum
 from django.utils import timezone
+
+
+logger = logging.getLogger(__name__)
 
 
 class TimeStampedModel(models.Model):
