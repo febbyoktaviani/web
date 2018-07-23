@@ -115,7 +115,7 @@ Response Example:
     'success remove currency exchange from track'
 
 
-### API GET CUREENCY EXCHANGE RATE DAILY
+### API GET CURRENCY EXCHANGE RATE DAILY
 URL: /api/mvp/exchange-track/?date=<YYYY-MM-DD>
 
 METHOD: GET
