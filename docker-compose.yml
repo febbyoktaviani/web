@@ -1,16 +1,26 @@
-db:
-  container_name: postgres_shopee
-  hostname: postgres
-  image: postgres
-  ports:
-    - "5432:5432"
-  expose:
-    - "5432"
-  volumes:
-    - dbdata1:/var/lib/postgresql
-  environment:
-    - "POSTGRES_DB=shopee_test"
-    - "POSTGRES_PASSWORD=password"
-    - "POSTGRES_USER=postgres"
-    - "POSTGRES_HOST=localhost"
-    - "POSTGRES_PORT=5432"
+version: '3'
+
+services:
+  db:
+    container_name: postgres_shopee
+    hostname: postgres
+    image: postgres
+    ports:
+      - "5432:5432"
+    expose:
+      - "5432"
+    environment:
+      - "POSTGRES_DB=shopee_test"
+      - "POSTGRES_PASSWORD=password"
+      - "POSTGRES_USER=postgres"
+      - "POSTGRES_HOST=localhost"
+      - "POSTGRES_PORT=5432"
+  web:
+    build: .
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
